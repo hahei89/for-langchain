@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 from langchain_community.llms.tongyi import Tongyi
 from langchain.prompts import FewShotPromptTemplate, PromptTemplate
-
+# from langchain.chains.llm import LLMChain
 load_dotenv()
 api_key = os.getenv('DASHSCOPE_API_KEY')
 
