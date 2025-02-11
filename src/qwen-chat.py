@@ -17,7 +17,11 @@ chain = prompt | llmModel
 
 question='生命的意义在于什么'
 
-res = chain.invoke({ "question": question })
+# 方式1
+# res = chain.invoke({ "question": question })
 
+# 方式2
+prompt_format = prompt.format(question=question)
+res = llmModel.invoke(prompt_format)
 print(res)
 
