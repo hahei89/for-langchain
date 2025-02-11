@@ -22,16 +22,24 @@ examples = [
 ]
 
 example_template = """
-单词: {work}
-反义词: {antonym}\\n
+单词: {word}
+反义词: {antonym}\n
 """
 
 example_prompt = PromptTemplate(input_variables=["word", "antonym"], template=example_template)
 few_shot_prompt = FewShotPromptTemplate(
-  examples,
-  example_prompt=example_template,
+  examples = examples,
+  example_prompt=example_prompt,
   prefix="给出每个单词的反义词",
-  suffix="单词: {input}\\n反义词",
-  input=["input"],
-  example_separator="\\n"
+  suffix="单词: {input}\n反义词",
+  input_variables=["input"],
+  example_separator="\n"
 )
+
+prompt_text = few_shot_prompt.format(input = '粗')
+llmModel = Tongyi(model="qwen-max",  api_key=api_key)
+# fewshot提示不支持langchain的管道操作符|的写法
+# chain = few_shot_prompt | llmModel
+
+res = llmModel.invoke(prompt_text)
+print(res)
