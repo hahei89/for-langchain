@@ -6,7 +6,7 @@ load_dotenv()
 api_key=os.getenv("DASHSCOPE_API_KEY")
 
 messages=[
-  {"role":"user", "content": "Find the value of $x$ that satisfies the equation $4x+5 = 6x+7$."}
+  {"role":"user", "content": "在一元方程$4x+5 = 6x+7$中，$x$的值是多少?"}
 ]
 
 response = dashscope.Generation.call(
