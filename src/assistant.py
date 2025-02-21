@@ -3,9 +3,11 @@ import os
 from dotenv import load_dotenv
 from http import HTTPStatus
 import dashscope
+import env_settings as env_settings
 
-load_dotenv()
-api_key=os.getenv("DASHSCOPE_API_KEY")
+# load_dotenv()
+# api_key=os.getenv("DASHSCOPE_API_KEY")
+api_key=env_settings.API_KEY
 # 创建一个新的空线程
 thread = dashscope.Threads.create(api_key=api_key)
 # 检查线程创建是否成功
